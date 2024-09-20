@@ -1,0 +1,14 @@
+
+        body {
+            border: 3px solid #343a40; /* Border around the page */
+            margin: 20px; /* Space around the border */
+            padding: 20px; /* Padding inside the border */
+        }
+        .table-container {
+            display: flex;
+            justify-content: center; /* Center the table horizontally */
+        }
+        h1{
+        	text-algin:center
+        }
+    

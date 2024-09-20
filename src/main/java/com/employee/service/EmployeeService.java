@@ -9,7 +9,7 @@ import com.employee.dao.IEmployeeDAO;
 import com.employee.model.Employee;
 
 @Service
-public class EnployeeService implements IEmpolyeeService {
+public class EmployeeService implements IEmpolyeeService {
 	
 	@Autowired
 	private IEmployeeDAO dao;
@@ -18,6 +18,11 @@ public class EnployeeService implements IEmpolyeeService {
 	public List<Employee> getAllEmployees() {
 		List<Employee>employees=dao.findAll();
 		return employees;
+	}
+
+	@Override
+	public Employee saveEmployee(Employee emp) {
+		return dao.save(emp);
 	}
 
 }
