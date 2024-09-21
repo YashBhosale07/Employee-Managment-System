@@ -1,6 +1,7 @@
 package com.employee.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,12 @@ public class EmployeeService implements IEmpolyeeService {
 	@Override
 	public Employee saveEmployee(Employee emp) {
 		return dao.save(emp);
+	}
+
+	@Override
+	public Employee findbyId(Integer id) {
+		Optional<Employee>optional=dao.findById(id);
+		return optional.get();
 	}
 
 }

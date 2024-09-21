@@ -18,7 +18,8 @@
   <div class="container-fluid">
     <h1 class="navbar-brand">Employee Relationship Management</h1>
       
-      <a href="${pageContext.request.contextPath}/EmployeeDetails" class="btn btn-outline-success">Add Employee</a>
+      <button onclick="window.location.href='./EmployeeDetails'; return false;" class="btn btn-outline-success">Add Employee</button>
+
     </form>
   </div>
 </nav>
@@ -30,6 +31,7 @@
       <th scope="col">FirstName</th>
       <th scope="col">LastName</th>
       <th scope="col">Email</th>
+      <th scope="col">Operation</th>
     </tr>
   </thead>
   <tbody>
@@ -39,6 +41,7 @@
       <td>${employee.firstName}</td>
       <td>${employee.lastName}</td>
       <td>${employee.email}</td>
+      <td><a href="<c:url value='/employee/updateEmployee?id=${employee.id}'/>" class="btn btn-outline-success"> Update</a></td>
       </tr>
       </c:forEach>
   </tbody>

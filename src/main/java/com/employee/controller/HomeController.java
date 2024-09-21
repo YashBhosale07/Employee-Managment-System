@@ -8,12 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.employee.model.Employee;
 import com.employee.service.IEmpolyeeService;
 
 
 @Controller
+@RequestMapping(value = "/employee")
 public class HomeController {
 
 	@Autowired
@@ -32,16 +35,31 @@ public class HomeController {
 	@PostMapping("/EmployeeDetails")
 	public String Savedetails(@ModelAttribute("emp")Employee employee,Map<String,Object>model) {
 		model.put("emp",employee);
-		service.saveEmployee(employee);
+		System.out.println(employee.getId());
 		System.out.println(employee);
-		return "home";
+		if(employee.getId()!=null) {
+			service.saveEmployee(employee);
+		}else {
+			service.saveEmployee(employee);
+		}
+		
+		System.out.println(employee);
+		return "redirect:/employee/getAllEmployees";
+
 	}
 	
-	@GetMapping("/getAllEmpolyees")
+	@GetMapping("/getAllEmployees")
 	public String getAllEmpolyees(Map<String,Object>model) {
 		System.out.println("Getting all Empolyee list");
 		List<Employee>empolyees=service.getAllEmployees();
 		model.put("employees",empolyees);
 		return "list-customers";
+	}
+	
+	@GetMapping("/updateEmployee")
+	public String updatedata(@RequestParam("id")Integer id,Map<String,Object>model) {
+		Employee e=service.findbyId(id);
+		model.put("employee",e );
+		return "UpdateForm";
 	}
 }

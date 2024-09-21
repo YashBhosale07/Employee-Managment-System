@@ -6,16 +6,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Employee Details Form</title>
+    <title>Update Details Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/form.css">
 </head>
 <body>
-<h1>Employee Details Form</h1>
+<h1>Update Details Form</h1>
  <div class="container mt-5 border border-dark-subtle">
     
-    <form:form action="/employee/EmployeeDetails" method="post" modelAttribute="emp">
-
+    <form:form  modelAttribute="employee" action="/employee/EmployeeDetails">
+	<form:hidden path="id"/>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label pt-4">FirstName</label>
     <form:input path="firstName" class="form-control"  aria-describedby="emailHelp"/>
