@@ -57,9 +57,15 @@ public class HomeController {
 	}
 	
 	@GetMapping("/updateEmployee")
-	public String updatedata(@RequestParam("id")Integer id,Map<String,Object>model) {
+	public String updateData(@RequestParam("id")Integer id,Map<String,Object>model) {
 		Employee e=service.findbyId(id);
 		model.put("employee",e );
 		return "UpdateForm";
+	}
+	
+	@GetMapping("/deleteEmployee")
+	public String deleteData(@RequestParam("id")Integer id) {
+		service.deleteById(id);
+		return "redirect:/employee/getAllEmployees";
 	}
 }

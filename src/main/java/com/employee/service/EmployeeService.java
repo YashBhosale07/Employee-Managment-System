@@ -32,4 +32,10 @@ public class EmployeeService implements IEmpolyeeService {
 		return optional.get();
 	}
 
+	@Override
+	public void deleteById(Integer id) {
+		dao.deleteById(id);
+		
+	}
+
 }
